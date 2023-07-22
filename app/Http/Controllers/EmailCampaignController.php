@@ -30,6 +30,41 @@ class EmailCampaignController extends Controller
 
         return new EmailCampaignResource($campaign);
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\EmailCampaign  $emailCampaign
+     * @return \Illuminate\Http\Response
+     */
+    public function show(EmailCampaign $emailCampaign)
+    {
+        return new EmailCampaignResource($emailCampaign);
+    }
 
-    // Other methods will go here
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\EmailCampaign  $emailCampaign
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, EmailCampaign $emailCampaign)
+    {
+        $emailCampaign->update($request->all());
+
+        return new EmailCampaignResource($emailCampaign);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\EmailCampaign  $emailCampaign
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(EmailCampaign $emailCampaign)
+    {
+        $emailCampaign->delete();
+
+        return response()->json(null, 204);
+    }
 }
